@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ubiratã Oliveira dos Santos - Currículo</title>
+<link rel="stylesheet" href="styles.css">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<!-- Floating Contact Button -->
+<button id="contactBtn" class="floating-contact-btn" title="Entre em Contato">
+    <i class="fas fa-envelope"></i>
+</button>
+<div class="container">
+    <header class="header">
+        <div class="header-content">
+            <div class="profile-section">
+                <div class="profile-photo">
+                    <img src="profile-photo.jpg" alt="Foto de Ubiratã Oliveira dos Santos" class="profile-image">
+                </div>
+                <div class="profile-info">
+                    <h1 class="name">Ubiratã Oliveira dos Santos</h1>
+                    <div class="contact-info">
+                        <div class="contact-item">
+                            <i class="fas fa-calendar-alt"></i>
+                            <span>26/11/1995</span>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>Aveiro, Portugal</span>
+                        </div>
+                    </div>
+                    <div class="header-actions">
+                        <button class="contact-header-btn" onclick="openContactModal()">
+                            <i class="fas fa-envelope"></i>
+                            <span data-translate="contact">Contato</span>
+                        </button>
+                        <button class="create-resume-btn" onclick="openResumeBuilder()">
+                            <i class="fas fa-plus"></i>
+                            <span data-translate="create_resume">Crie Seu Currículo Grátis</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-graduation-cap"></i>
+                <span data-translate="academic_education">Formação Académica e Cursos</span>
+            </h2>
+            <div class="section-content">
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="course-title">Ciência da Computação</h3>
+                        <span class="year">2019</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="course-title">Técnico de Telemóveis</h3>
+                        <span class="year">2021</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="course-title">Redes Cisco</h3>
+                        <span class="year">2020</span>
+                    </div>
+                </div>
+                <div class="education-item">
+                    <div class="education-header">
+                        <h3 class="course-title">Montagem e Manutenção de Micros</h3>
+                        <span class="year">2013</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <h2 class="section-title">
+                <i class="fas fa-briefcase"></i>
+                <span data-translate="professional_experience">Experiência Profissional</span>
+            </h2>
+            <div class="section-content">
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-info">
+                            <h3 class="job-title">Operador de Produção de Cerâmica</h3>
+                            <h4 class="company">Love Files</h4>
+                        </div>
+                        <span class="duration">2 anos</span>
+                    </div>
+                    <div class="job-description">
+                        <p><strong>Funções:</strong> Escolha de pisos bons e ruins, operar linha de produção, resolver avarias da máquina, colocar matéria na mesma, resolver problemas nos LGV, resolver problema na contadora e planificadora. Na Love faço de tudo um pouco: abasteço as paletes com empilhador entre outras tarefas. Sou muito bom com sistema.</p>
+                    </div>
+                </div>
+
+                <div class="experience-item">
+                    <div class="experience-header">
+                        <div class="job-info">
+                            <h3 class="job-title">Operador de Produção</h3>
+                            <h4 class="company">Farmalabor</h4>
+                        </div>
+                        <span class="duration">1 ano</span>
+                    </div>
+                    <div class="job-description">
+                        <p><strong>Funções:</strong> Operar linha de produção de remédios, abastecer máquina, troca de materiais, troca de lotes, empacotar, consumir o material usado no PDA, levar palete para entrada do armazém entre outras funções com manutenção.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    
+</div>
+
+<!-- Contact Modal -->
+<div id="contactModal" class="modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Entre em Contato</h2>
+            <button class="close-btn" onclick="closeContactModal()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <div class="contact-visual">
+                <div class="contact-avatar">
+                    <img src="profile-photo.jpg" alt="Contato" class="contact-image">
+                    <div class="contact-pulse"></div>
+                </div>
+                <div class="contact-message">
+                    <h3>Vamos Conversar!</h3>
+                    <p>Estou disponível para novas oportunidades e parcerias profissionais.</p>
+                </div>
+            </div>
+            <div class="contact-options">
+                <div class="contact-option">
+                    <i class="fas fa-envelope"></i>
+                    <div>
+                        <h4>Email</h4>
+                        <p>ubiratam_oliveira@hotmail.com</p>
+                        <button class="contact-action-btn" onclick="window.open('mailto:ubiratam_oliveira@hotmail.com')">
+                            Enviar Email
+                        </button>
+                    </div>
+                </div>
+                <div class="contact-option">
+                    <i class="fab fa-whatsapp"></i>
+                    <div>
+                        <h4>WhatsApp</h4>
+                        <p>+351 XXX XXX XXX</p>
+                        <button class="contact-action-btn" onclick="window.open('https://wa.me/351XXXXXXXXX')">
+                            Abrir WhatsApp
+                        </button>
+                    </div>
+                </div>
+                <div class="contact-option">
+                    <i class="fab fa-linkedin"></i>
+                    <div>
+                        <h4>LinkedIn</h4>
+                        <p>Perfil Profissional</p>
+                        <button class="contact-action-btn" onclick="window.open('https://linkedin.com/in/ubirata-santos')">
+                            Ver Perfil
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Resume Builder Modal -->
+<div id="resumeBuilderModal" class="modal resume-builder-modal">
+    <div class="modal-content builder-content">
+        <div class="modal-header">
+            <h2>Crie Seu Currículo</h2>
+            <button class="close-btn" onclick="closeResumeBuilder()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="modal-body">
+            <form id="resumeForm" class="resume-form">
+                <div class="form-section">
+                    <h3><i class="fas fa-globe"></i> <span data-translate="language">Idioma</span></h3>
+                    <div class="form-group">
+                        <label data-translate="choose_language">Escolha o idioma</label>
+                        <select id="languageSelect" onchange="changeLanguage()">
+                            <option value="pt">Português (Portugal)</option>
+                            <option value="pt-br">Português (Brasil)</option>
+                            <option value="en">English</option>
+                            <option value="es">Español</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-section">
+                    <h3><i class="fas fa-palette"></i> <span data-translate="resume_template">Modelo de Currículo</span></h3>
+                    <div class="form-group">
+                        <label data-translate="choose_template">Escolha o modelo</label>
+                        <select id="resumeTemplate" onchange="updateTemplatePreview()">
+                            <option value="modern" data-translate="modern_template">Moderno (Padrão)</option>
+                            <option value="europass" data-translate="europass_template">Europass</option>
+                            <option value="classic" data-translate="classic_template">Clássico</option>
+                            <option value="minimalist" data-translate="minimalist_template">Minimalista</option>
+                            <option value="diy" data-translate="diy_template">Faça Você Mesmo</option>
+                        </select>
+                    </div>
+                    <div id="templatePreview" class="template-preview">
+                        <div class="template-showcase">
+                            <img id="templateImage" src="" alt="Preview do modelo">
+                            <p id="templateDescription" data-translate="modern_description">Design colorido com gradiente e layout moderno</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Picker Section -->
+                <div class="form-section">
+                    <h3><i class="fas fa-paint-brush"></i> <span data-translate="background_color">Cor do Fundo</span></h3>
+                    <div class="form-group">
+                        <label data-translate="choose_background_color">Escolha a cor de fundo</label>
+                            <div class="color-palette">
+                                <div class="color-option" data-color="#ffffff" style="background-color: #ffffff; border: 2px solid #ddd;" onclick="selectBackgroundColor('#ffffff')"></div>
+                                <div class="color-option" data-color="#f8f9fa" style="background-color: #f8f9fa; border: 2px solid #ddd;" onclick="selectBackgroundColor('#f8f9fa')"></div>
+                                <div class="color-option" data-color="#e3f2fd" style="background-color: #e3f2fd; border: 2px solid #ddd;" onclick="selectBackgroundColor('#e3f2fd')"></div>
+                                <div class="color-option" data-color="#e8f5e8" style="background-color: #e8f5e8; border: 2px solid #ddd;" onclick="selectBackgroundColor('#e8f5e8')"></div>
+                                <div class="color-option" data-color="#fff3e0" style="background-color: #fff3e0; border: 2px solid #ddd;" onclick="selectBackgroundColor('#fff3e0')"></div>
+                                <div class="color-option" data-color="#f3e5f5" style="background-color: #f3e5f5; border: 2px solid #ddd;" onclick="selectBackgroundColor('#f3e5f5')"></div>
+                                <div class="color-option" data-color="#fce4ec" style="background-color: #fce4ec; border: 2px solid #ddd;" onclick="selectBackgroundColor('#fce4ec')"></div>
+                                <div class="color-option" data-color="#e0f2f1" style="background-color: #e0f2f1; border: 2px solid #ddd;" onclick="selectBackgroundColor('#e0f2f1')"></div>
+                            </div>
+                            <div class="custom-color-input">
+                                <label data-translate="custom_color">Cor personalizada:</label>
+                                <input type="color" id="customBackgroundColor" value="#ffffff" onchange="selectBackgroundColor(this.value)">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> <span data-translate="personal_info">Informações Pessoais</span></h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="full_name">Nome Completo</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="birth_date">Data de Nascimento</label>
+                                <input type="date" id="birthDate" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label data-translate="city">Cidade</label>
+                                <input type="text" id="city" required>
+                            </div>
+                            <div class="form-group">
+                                <label data-translate="email">Email</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="phone">Telefone</label>
+                            <input type="tel" id="phone">
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="profile_photo">Foto de Perfil</label>
+                            <input type="file" id="profilePhoto" accept="image/*" onchange="previewPhoto(this)">
+                            <div id="photoPreview" class="photo-preview"></div>
+                        </div>
+                        <div class="form-group">
+                            <label data-translate="objective">Objetivo</label>
+                            <textarea id="objective" rows="3" placeholder="Descreva seus objetivos profissionais..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-graduation-cap"></i> <span data-translate="education">Formação</span></h3>
+                        <div id="educationContainer">
+                            <div class="education-entry">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-translate="course">Curso</label>
+                                        <input type="text" name="course" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-translate="year">Ano</label>
+                                        <input type="number" name="year" min="1950" max="2030" required>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addEducation()">
+                            <i class="fas fa-plus"></i> <span data-translate="add_course">Adicionar Curso</span>
+                        </button>
+                    </div>
+
+                    <div class="form-section">
+                        <h3><i class="fas fa-briefcase"></i> <span data-translate="experience">Experiência Profissional</span></h3>
+                        <div id="experienceContainer">
+                            <div class="experience-entry">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-translate="position">Cargo</label>
+                                        <input type="text" name="position" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label data-translate="company">Empresa</label>
+                                        <input type="text" name="company" required>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label data-translate="duration">Duração</label>
+                                        <input type="text" name="duration" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label data-translate="description">Descrição das Funções</label>
+                                    <textarea name="description" rows="3" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="add-btn" onclick="addExperience()">
+                            <i class="fas fa-plus"></i> <span data-translate="add_experience">Adicionar Experiência</span>
+                        </button>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="preview-btn" onclick="previewResume()">
+                            <i class="fas fa-eye"></i> <span data-translate="preview">Visualizar</span>
+                        </button>
+                        <button type="button" class="generate-btn" onclick="generateResume()">
+                            <i class="fas fa-download"></i> <span data-translate="generate_download">Gerar e Baixar</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Resume Preview Modal -->
+    <div id="resumePreviewModal" class="modal preview-modal">
+        <div class="modal-content preview-content">
+            <div class="modal-header">
+                <h2>Visualizar Currículo</h2>
+                <button class="close-btn" onclick="closePreview()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="resumePreview" class="resume-preview"></div>
+                <div class="preview-actions">
+                    <button class="edit-btn" onclick="editResume()">
+                        <i class="fas fa-edit"></i> Editar
+                    </button>
+                    <button class="download-preview-btn" onclick="downloadGeneratedResume()">
+                        <i class="fas fa-download"></i> Baixar PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- DIY Template Builder Modal -->
+    <div id="diyBuilderModal" class="modal diy-builder-modal">
+        <div class="modal-content diy-builder-content">
+            <div class="modal-header">
+                <h2>Construtor Faça Você Mesmo</h2>
+                <button class="close-btn" onclick="closeDiyBuilder()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="diy-builder-container">
+                    <div class="diy-toolbar">
+                        <div class="toolbar-section">
+                            <h4>Elementos</h4>
+                            <button class="tool-btn" onclick="addTextElement()">
+                                <i class="fas fa-text-width"></i> Texto
+                            </button>
+                            <button class="tool-btn" onclick="addImageElement()">
+                                <i class="fas fa-image"></i> Imagem
+                            </button>
+                            <button class="tool-btn" onclick="addShapeElement()">
+                                <i class="fas fa-square"></i> Forma
+                            </button>
+                        </div>
+                        <div class="toolbar-section">
+                            <h4>Cores</h4>
+                            <div class="color-tools">
+                                <label>Fundo:</label>
+                                <input type="color" id="diyBackgroundColor" value="#ffffff" onchange="changeDiyBackground(this.value)">
+                                <label>Texto:</label>
+                                <input type="color" id="diyTextColor" value="#000000" onchange="changeDiyTextColor(this.value)">
+                            </div>
+                        </div>
+                        <div class="toolbar-section">
+                            <h4>Ações</h4>
+                            <button class="tool-btn" onclick="clearDiyCanvas()">
+                                <i class="fas fa-trash"></i> Limpar
+                            </button>
+                            <button class="tool-btn" onclick="previewDiyResume()">
+                                <i class="fas fa-eye"></i> Visualizar
+                            </button>
+                            <button class="tool-btn" onclick="downloadDiyResume()">
+                                <i class="fas fa-download"></i> Baixar
+                            </button>
+                        </div>
+                    </div>
+                    <div class="diy-canvas-container">
+                        <div id="diyCanvas" class="diy-canvas" ondrop="dropElement(event)" ondragover="allowDrop(event)">
+                            <div class="canvas-guide">
+                                <p>Arraste elementos aqui para criar seu currículo personalizado</p>
+                                <p>Clique nos elementos para editá-los</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" onerror="console.error('jsPDF failed to load')"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" onerror="console.error('html2canvas failed to load')"></script>
+    <script src="template-previews.js"></script>
+    <script src="translations.js"></script>
+    <script src="script.js"></script>
+
+<div id="curriculo-container" style="width: 100%; max-width: 800px; margin: 0 auto; padding: 20px; background: #fff; border: 1px solid #ccc;">
+</div>
+
+
+<div style="text-align:center;margin:20px;">
+</div>
+
+
+<footer style="background:#1a1a1a;color:#fff;padding:20px;text-align:center;position:relative;">
+  <p>© 2025 Ubiratã Oliveira dos Santos</p>
+  <p>Me sigam nas redes sociais para estar me incentivando @biraah013</p>
+</footer>
+
+</body>
+</html>
