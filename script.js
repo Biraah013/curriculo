@@ -1,36 +1,36 @@
-
+// JavaScript para funcionalidades interativas do currículo
 // Autor: Ubiratã Oliveira dos Santos
 
-
+// Aguarda o DOM carregar completamente
 document.addEventListener('DOMContentLoaded', function() {
     initializeInteractiveFeatures();
     initializeAnimations();
     initializeScrollEffects();
 });
 
-
+// Inicializa todas as funcionalidades interativas
 function initializeInteractiveFeatures() {
-    
+    // Adiciona event listeners para botões flutuantes
     const floatingContactBtn = document.getElementById('contactBtn');
     if (floatingContactBtn) {
         floatingContactBtn.addEventListener('click', openContactModal);
     }
     
-    
+    // Verifica se as bibliotecas de PDF estão carregadas
     setTimeout(() => {
         if (!window.jspdf || !window.html2canvas) {
             console.warn('Bibliotecas de PDF não carregadas. Usando fallback de impressão.');
         }
     }, 3000);
 
-    /
+    // Adiciona event listeners para fechar modal com ESC
     document.addEventListener('keydown', function(event) {
         if (event.key === 'Escape') {
             closeContactModal();
         }
     });
 
-    
+    // Fecha modal ao clicar fora dele
     const modal = document.getElementById('contactModal');
     if (modal) {
         modal.addEventListener('click', function(event) {
@@ -40,56 +40,56 @@ function initializeInteractiveFeatures() {
         });
     }
 
-    
+    // Adiciona efeitos de hover aos cards
     addHoverEffects();
 }
 
-
+// Abre o modal de contato com animação
 function openContactModal() {
     const modal = document.getElementById('contactModal');
     if (modal) {
         modal.style.display = 'flex';
-        
+        // Força reflow para aplicar a animação
         modal.offsetHeight;
         modal.classList.add('modal-open');
         
-        
+        // Adiciona classe para animação da imagem
         const contactAvatar = document.querySelector('.contact-avatar');
         if (contactAvatar) {
             contactAvatar.classList.add('avatar-animate');
         }
         
-        
+        // Impede scroll do body
         document.body.style.overflow = 'hidden';
         
-        
+        // Adiciona animação sequencial para opções de contato
         animateContactOptions();
     }
 }
 
-
+// Fecha o modal de contato
 function closeContactModal() {
     const modal = document.getElementById('contactModal');
     if (modal) {
         modal.classList.remove('modal-open');
         
-        
+        // Remove animação da imagem
         const contactAvatar = document.querySelector('.contact-avatar');
         if (contactAvatar) {
             contactAvatar.classList.remove('avatar-animate');
         }
         
-        
+        // Restaura scroll do body
         document.body.style.overflow = 'auto';
         
-        
+        // Remove modal após animação
         setTimeout(() => {
             modal.style.display = 'none';
         }, 300);
     }
 }
 
-
+// Anima as opções de contato sequencialmente
 function animateContactOptions() {
     const contactOptions = document.querySelectorAll('.contact-option');
     contactOptions.forEach((option, index) => {
@@ -99,7 +99,7 @@ function animateContactOptions() {
     });
 }
 
-
+// Adiciona efeitos de hover aos cards
 function addHoverEffects() {
     const cards = document.querySelectorAll('.education-item, .experience-item');
     
@@ -116,9 +116,9 @@ function addHoverEffects() {
     });
 }
 
-
+// Inicializa animações de entrada
 function initializeAnimations() {
- 
+    // Animação para o header
     const header = document.querySelector('.header');
     if (header) {
         header.style.opacity = '0';
@@ -131,7 +131,7 @@ function initializeAnimations() {
         }, 100);
     }
     
-    
+    // Animação para seções
     const sections = document.querySelectorAll('.section');
     sections.forEach((section, index) => {
         section.style.opacity = '0';
@@ -144,7 +144,7 @@ function initializeAnimations() {
         }, 300 + (index * 200));
     });
     
-   
+    // Animação para botão flutuante
     const floatingBtn = document.querySelector('.floating-contact-btn');
     if (floatingBtn) {
         floatingBtn.style.opacity = '0';
@@ -158,7 +158,7 @@ function initializeAnimations() {
     }
 }
 
-
+// Inicializa efeitos de scroll
 function initializeScrollEffects() {
     let lastScrollTop = 0;
     const floatingBtn = document.querySelector('.floating-contact-btn');
@@ -166,20 +166,20 @@ function initializeScrollEffects() {
     window.addEventListener('scroll', function() {
         const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
         
-        
+        // Efeito de parallax sutil no header
         const header = document.querySelector('.header');
         if (header) {
             const parallaxSpeed = scrollTop * 0.3;
             header.style.transform = `translateY(${parallaxSpeed}px)`;
         }
         
-       
+        // Esconde/mostra botão flutuante baseado na direção do scroll
         if (floatingBtn) {
             if (scrollTop > lastScrollTop && scrollTop > 100) {
-               
+                // Scrolling para baixo
                 floatingBtn.style.transform = 'translateY(100px)';
             } else {
-                
+                // Scrolling para cima
                 floatingBtn.style.transform = 'translateY(0)';
             }
         }
@@ -188,7 +188,7 @@ function initializeScrollEffects() {
     });
 }
 
-
+// Adiciona efeito de digitação ao nome
 function typewriterEffect() {
     const nameElement = document.querySelector('.name');
     if (nameElement) {
@@ -207,7 +207,7 @@ function typewriterEffect() {
     }
 }
 
-
+// Adiciona efeito de loading aos botões
 function addButtonLoadingEffect() {
     const buttons = document.querySelectorAll('.contact-action-btn');
     
@@ -225,15 +225,15 @@ function addButtonLoadingEffect() {
     });
 }
 
-
+// Funcionalidade de impressão personalizada
 function customPrint() {
-    
+    // Esconde elementos que não devem aparecer na impressão
     const elementsToHide = document.querySelectorAll('.floating-contact-btn, .header-actions');
     elementsToHide.forEach(element => {
         element.style.display = 'none';
     });
     
-   
+    // Executa a impressão
     
     const link = document.createElement('a');
     link.href = URL.createObjectURL(blob);
@@ -241,7 +241,7 @@ function customPrint() {
     link.click();
     
     
-
+    // Restaura elementos após impressão
     setTimeout(() => {
         elementsToHide.forEach(element => {
             element.style.display = '';
@@ -249,7 +249,7 @@ function customPrint() {
     }, 1000);
 }
 
-
+// Adiciona evento para detectar quando usuário está pronto para imprimir
 window.addEventListener('beforeprint', function() {
     document.body.classList.add('printing');
 });
@@ -258,13 +258,13 @@ window.addEventListener('afterprint', function() {
     document.body.classList.remove('printing');
 });
 
-
+// Funcionalidade de tema (para futuras implementações)
 function toggleTheme() {
     document.body.classList.toggle('dark-theme');
     localStorage.setItem('theme', document.body.classList.contains('dark-theme') ? 'dark' : 'light');
 }
 
-
+// Carrega tema salvo
 function loadSavedTheme() {
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
@@ -272,12 +272,12 @@ function loadSavedTheme() {
     }
 }
 
+// Funções de PDF removidas - apenas gerador de currículos disponível
 
 
-
-
+// Função alternativa para download em PDF (mais avançada)
 function downloadPDFAdvanced() {
-    
+    // Verifica se as bibliotecas estão carregadas
     if (!window.jspdf || !window.html2canvas) {
         console.log('Bibliotecas não carregadas, usando impressão simples');
         
@@ -293,26 +293,27 @@ function downloadPDFAdvanced() {
     
     const { jsPDF } = window.jspdf;
     
-   
+    // Mostra feedback ao usuário
     const downloadBtn = document.querySelector('.download-btn');
     if (downloadBtn) {
         const originalText = downloadBtn.innerHTML;
         downloadBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Gerando PDF...';
         downloadBtn.disabled = true;
         
-      
+        // Restaura botão após 5 segundos (backup)
         setTimeout(() => {
             downloadBtn.innerHTML = originalText;
             downloadBtn.disabled = false;
         }, 5000);
     }
     
+    // Esconde elementos não desejados
     const elementsToHide = document.querySelectorAll('.floating-contact-btn, .header-actions');
     elementsToHide.forEach(element => {
         element.style.display = 'none';
     });
     
-
+    // Espera um pouco para elementos serem escondidos
     setTimeout(() => {
         html2canvas(document.querySelector('.container'), {
             scale: 1.5,
@@ -354,12 +355,12 @@ function downloadPDFAdvanced() {
     
             }
             
-            
+            // Restaura elementos escondidos
             elementsToHide.forEach(element => {
                 element.style.display = '';
             });
             
-           
+            // Restaura botão
             if (downloadBtn) {
                 downloadBtn.innerHTML = originalText;
                 downloadBtn.disabled = false;
@@ -375,11 +376,12 @@ function downloadPDFAdvanced() {
     link.click();
     
             
+            // Restaura elementos escondidos
             elementsToHide.forEach(element => {
                 element.style.display = '';
             });
             
-            
+            // Restaura botão
             if (downloadBtn) {
                 downloadBtn.innerHTML = originalText;
                 downloadBtn.disabled = false;
@@ -388,7 +390,7 @@ function downloadPDFAdvanced() {
     }, 100);
 }
 
-
+// Resume Builder Functions
 function openResumeBuilder() {
     const modal = document.getElementById('resumeBuilderModal');
     if (modal) {
@@ -499,7 +501,7 @@ function closePreview() {
 
 function editResume() {
     closePreview();
-    
+    // O formulário já está preenchido, não precisa fazer nada
 }
 
 function generateResume() {
@@ -508,6 +510,7 @@ function generateResume() {
         
         const resumeHtml = generateResumeHTML(formData);
         
+        // Usar impressão do navegador com verificação de bloqueio
         try {
             const printWindow = window.open('', '_blank');
             if (!printWindow) {
@@ -524,7 +527,7 @@ function generateResume() {
                 tempDiv.style.padding = '20px';
                 tempDiv.style.overflow = 'auto';
                 
-           
+                // Adicionar botão para fechar e imprimir
                 const buttonContainer = document.createElement('div');
                 buttonContainer.style.position = 'fixed';
                 buttonContainer.style.top = '10px';
@@ -573,7 +576,7 @@ function generateResume() {
             alert('Erro ao abrir janela de impressão. Tente novamente ou permita popups para este site.');
         }
         
-        
+        // Fecha o modal
         closeResumeBuilder();
     });
 }
@@ -584,11 +587,11 @@ function downloadGeneratedResume() {
     
     const resumeContent = resumePreview.innerHTML;
     
-
+    // Usar impressão do navegador com verificação de bloqueio
     try {
         const printWindow = window.open('', '_blank');
         if (!printWindow) {
-            
+            // Popup bloqueado, usar método alternativo
             const tempDiv = document.createElement('div');
             tempDiv.innerHTML = resumeContent;
             tempDiv.style.position = 'fixed';
@@ -601,7 +604,7 @@ function downloadGeneratedResume() {
             tempDiv.style.padding = '20px';
             tempDiv.style.overflow = 'auto';
             
-            
+            // Adicionar botão para fechar e imprimir
             const buttonContainer = document.createElement('div');
             buttonContainer.style.position = 'fixed';
             buttonContainer.style.top = '10px';
@@ -653,7 +656,7 @@ function downloadGeneratedResume() {
     closePreview();
 }
 
-
+// Função para preview da foto
 function previewPhoto(input) {
     const preview = document.getElementById('photoPreview');
     
@@ -670,23 +673,23 @@ function previewPhoto(input) {
     }
 }
 
-
+// Variável global para idioma atual
 let currentLanguage = 'pt';
 
-
+// Função para mudança de idioma
 function changeLanguage() {
     const selectedLanguage = document.getElementById('languageSelect').value;
     currentLanguage = selectedLanguage;
-
     
+    // Atualizar todos os elementos com data-translate
     document.querySelectorAll('[data-translate]').forEach(element => {
         const key = element.getAttribute('data-translate');
         if (translations[currentLanguage] && translations[currentLanguage][key]) {
             element.textContent = translations[currentLanguage][key];
         }
     });
-
     
+    // Atualizar opções do select de templates
     const templateSelect = document.getElementById('resumeTemplate');
     templateSelect.querySelectorAll('option').forEach(option => {
         const key = option.getAttribute('data-translate');
@@ -695,23 +698,26 @@ function changeLanguage() {
         }
     });
     
-    
+    // Atualizar preview do template
     updateTemplatePreview();
     
- 
+    // Salvar idioma no localStorage
     localStorage.setItem('preferredLanguage', currentLanguage);
 }
 
+// Função para atualizar preview do template
 function updateTemplatePreview() {
     const selectedTemplate = document.getElementById('resumeTemplate').value;
     const templateImage = document.getElementById('templateImage');
     const templateDescription = document.getElementById('templateDescription');
     
+    // Usar as imagens SVG reais dos templates
     if (templatePreviews[selectedTemplate]) {
         templateImage.src = 'data:image/svg+xml;charset=UTF-8,' + encodeURIComponent(templatePreviews[selectedTemplate]);
         templateImage.alt = `Preview do modelo ${selectedTemplate}`;
     }
     
+    // Atualizar descrição com base no idioma atual
     const descriptionKeys = {
         modern: 'modern_description',
         europass: 'europass_description',
@@ -743,6 +749,7 @@ function collectFormData() {
             experience: []
         };
         
+        // Coleta a foto se houver
         const photoInput = document.getElementById('profilePhoto');
         if (photoInput.files && photoInput.files[0]) {
             const reader = new FileReader();
@@ -756,12 +763,14 @@ function collectFormData() {
         }
         
         function continueCollecting() {
+            // Validação básica
             if (!data.fullName || !data.birthDate || !data.city || !data.email) {
                 alert('Por favor, preencha todos os campos obrigatórios.');
                 resolve(null);
                 return;
             }
             
+            // Coletar educação
             const educationEntries = document.querySelectorAll('.education-entry');
             educationEntries.forEach(entry => {
                 const course = entry.querySelector('input[name="course"]').value;
@@ -771,6 +780,7 @@ function collectFormData() {
                 }
             });
             
+            // Coletar experiência
             const experienceEntries = document.querySelectorAll('.experience-entry');
             experienceEntries.forEach(entry => {
                 const position = entry.querySelector('input[name="position"]').value;
@@ -1087,6 +1097,7 @@ function generateMinimalistHTML(data) {
     `;
 }
 
+// Função para carregar idioma salvo
 function loadSavedLanguage() {
     const savedLanguage = localStorage.getItem('preferredLanguage');
     if (savedLanguage && translations[savedLanguage]) {
@@ -1097,10 +1108,12 @@ function loadSavedLanguage() {
         }
         changeLanguage();
     } else {
+        // Inicializar preview do template
         updateTemplatePreview();
     }
 }
 
+// Função para atualizar preview da foto com tradução
 function previewPhoto(input) {
     const preview = document.getElementById('photoPreview');
     
@@ -1118,6 +1131,7 @@ function previewPhoto(input) {
     }
 }
 
+// Função para atualizar templates com idioma
 function generateModernHTML(data) {
     const birthDate = new Date(data.birthDate);
     const formattedDate = birthDate.toLocaleDateString(currentLanguage === 'pt-br' ? 'pt-BR' : 'pt-PT');
@@ -1220,6 +1234,7 @@ function generateModernHTML(data) {
     `;
 }
 
+// Inicializa tema salvo e idioma quando página carrega
 document.addEventListener('DOMContentLoaded', function() {
     loadSavedTheme();
     loadSavedLanguage();
